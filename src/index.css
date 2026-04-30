@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-surface: #ffffff;
+  --color-surface-container-lowest: #fafafa;
+  --color-surface-container-low: #f5f5f5;
+  --color-surface-container: #eeeeee;
+  --color-surface-container-high: #e0e0e0;
+  --color-surface-container-highest: #bdbdbd;
+  
+  --color-primary: #ec4899;
+  --color-primary-container: #cf44a0;
+  --color-on-primary-container: #ffffff;
+  
+  --color-secondary: #a855f7;
+  --color-secondary-container: #7c3aed;
+  
+  --color-tertiary: #f472b6;
+  --color-tertiary-container: #db2777;
+  
+  --color-on-surface: #1a1c1e;
+  --color-on-surface-variant: #44474e;
+  --color-outline-variant: #c4c6d0;
+  
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans;
+    direction: rtl;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-xl;
+}
+
+.ghost-border {
+  @apply border border-on-surface/10;
+}
+
+.tech-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.metallic-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, var(--color-on-surface) 0%, var(--color-primary) 100%);
+}
+
+/* Brand Styling */
+.brand-text {
+  @apply font-black tracking-tighter;
+}
+.brand-black {
+  @apply text-on-surface;
+}
+.brand-color {
+  @apply text-primary;
+}
+
+/* Custom scrollbar for light theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-on-surface/10 rounded-full hover:bg-on-surface/20 transition-colors;
+}

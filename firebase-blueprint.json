@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "PortfolioItem": {
+      "title": "Portfolio Item",
+      "description": "A project featured in the portfolio section",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "image": { "type": "string" },
+        "link": { "type": "string" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "image"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "A service offered by the company",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "icon": { "type": "string" },
+        "price": { "type": "string" },
+        "description": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["title", "icon", "price"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer project request",
+      "type": "object",
+      "properties": {
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "projectType": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Page": {
+      "title": "Page",
+      "description": "Dynamic page content",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "location": { "type": "string", "enum": ["header", "body"] },
+        "order": { "type": "number" },
+        "content": { "type": "object" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "SiteConfig": {
+      "title": "Site Configuration",
+      "description": "Global settings for the website",
+      "type": "object",
+      "properties": {
+        "footerText": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "contactEmail": { "type": "string" }
+      }
+    },
+    "Client": {
+      "title": "Client",
+      "description": "A customer of the agency",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "city": { "type": "string" },
+        "status": { "type": "string" },
+        "projects": { "type": "number" },
+        "registrationTypes": { "type": "array", "items": { "type": "string" } },
+        "hosting": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone"]
+    }
+  },
+  "firestore": {
+    "/portfolio/{portfolioId}": {
+      "schema": "PortfolioItem",
+      "description": "Collection of portfolio projects"
+    },
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Collection of services"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer orders"
+    },
+    "/pages/{pageId}": {
+      "schema": "Page",
+      "description": "Collection of dynamic pages"
+    },
+    "/site_config/{configId}": {
+      "schema": "SiteConfig",
+      "description": "Global settings"
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Collection of agency clients"
+    }
+  }
+}
